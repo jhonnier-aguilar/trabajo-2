@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda Online – Arquitectura Empresarial</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            business:  '#16a34a', /* green-600  */
+            appLayer:  '#2563eb', /* blue-600   */
+            techLayer: '#7c3aed', /* violet-600 */
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Smooth scroll handled by Tailwind scroll-smooth on <html> */
+    /* Custom gradient hero */
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    }
+    /* Card hover lift */
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+    /* Arrow steps connector */
+    .arrow-step::after {
+      content: "→";
+      font-size: 1.5rem;
+      color: #2563eb;
+      margin: 0 0.5rem;
+    }
+    .arrow-step:last-child::after {
+      content: "";
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-700 antialiased">
+
+  <!-- ============================================================
+       NAVBAR – sticky, blurred background
+  ============================================================ -->
+  <nav id="top" class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <!-- Brand -->
+      <a href="#inicio" class="flex items-center gap-2 text-blue-700 font-bold text-lg leading-tight">
+        🏪 <span>Tienda Online <span class="text-gray-500 font-normal text-base">– Arquitectura Empresarial</span></span>
+      </a>
+      <!-- Nav links -->
+      <ul class="flex flex-wrap gap-1 text-sm font-medium">
+        <li><a href="#inicio"         class="px-3 py-1.5 rounded-full hover:bg-blue-50 hover:text-blue-700 transition">Inicio</a></li>
+        <li><a href="#archimate"      class="px-3 py-1.5 rounded-full hover:bg-green-50 hover:text-green-700 transition">ArchiMate</a></li>
+        <li><a href="#arquitectura-ti" class="px-3 py-1.5 rounded-full hover:bg-blue-50 hover:text-blue-700 transition">Arquitectura TI</a></li>
+        <li><a href="#togaf"          class="px-3 py-1.5 rounded-full hover:bg-violet-50 hover:text-violet-700 transition">TOGAF</a></li>
+        <li><a href="#conclusiones"   class="px-3 py-1.5 rounded-full hover:bg-gray-100 hover:text-gray-900 transition">Conclusiones</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SECCIÓN 1 – INICIO / HERO
+  ============================================================ -->
+  <section id="inicio" class="hero-gradient text-white py-24 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="uppercase tracking-widest text-blue-200 text-sm mb-3">Trabajo Académico · Arquitectura Empresarial</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
+        Arquitectura Empresarial<br class="hidden sm:block" />
+        de una Tienda Online
+      </h1>
+      <p class="text-blue-100 text-lg max-w-2xl mx-auto mb-10">
+        Este trabajo presenta el análisis y modelado de la arquitectura empresarial de una tienda 
+        en línea, utilizando los marcos de referencia <strong class="text-white">ArchiMate</strong>, 
+        <strong class="text-white">TOGAF</strong> y buenas prácticas de 
+        <strong class="text-white">Arquitectura TI</strong>.
+      </p>
+      <a href="#archimate"
+         class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-full shadow hover:shadow-lg hover:bg-blue-50 transition card-hover">
+        Explorar el proyecto ↓
+      </a>
+    </div>
+
+    <!-- Overview cards -->
+    <div class="max-w-6xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
+
+      <!-- Card 1 – ArchiMate -->
+      <a href="#archimate"
+         class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-center card-hover">
+        <div class="text-4xl mb-3">🗺️</div>
+        <h3 class="font-bold text-white text-lg mb-1">Diagrama ArchiMate</h3>
+        <p class="text-blue-200 text-sm">Modelo visual por capas: Negocio, Aplicaciones y Tecnología.</p>
+      </a>
+
+      <!-- Card 2 – Arquitectura TI -->
+      <a href="#arquitectura-ti"
+         class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-center card-hover">
+        <div class="text-4xl mb-3">🖥️</div>
+        <h3 class="font-bold text-white text-lg mb-1">Arquitectura TI</h3>
+        <p class="text-blue-200 text-sm">Infraestructura, plataformas y servicios tecnológicos integrados.</p>
+      </a>
+
+      <!-- Card 3 – TOGAF -->
+      <a href="#togaf"
+         class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-center card-hover">
+        <div class="text-4xl mb-3">🔄</div>
+        <h3 class="font-bold text-white text-lg mb-1">Análisis TOGAF</h3>
+        <p class="text-blue-200 text-sm">Aplicación del ADM con fases B, C y D; análisis AS-IS vs TO-BE.</p>
+      </a>
+
+      <!-- Card 4 – Conclusiones -->
+      <a href="#conclusiones"
+         class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-center card-hover">
+        <div class="text-4xl mb-3">✅</div>
+        <h3 class="font-bold text-white text-lg mb-1">Conclusiones</h3>
+        <p class="text-blue-200 text-sm">Síntesis de hallazgos y recomendaciones del análisis realizado.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 2 – ARCHIMATE
+  ============================================================ -->
+  <section id="archimate" class="bg-white py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center mb-12">
+        <span class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide mb-3">Marco de modelado</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Diagrama ArchiMate</h2>
+        <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+          Representación visual de la arquitectura de la tienda online usando el estándar ArchiMate 3.1 de The Open Group.
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-10 items-start">
+
+        <!-- Imagen placeholder -->
+        <div class="lg:w-1/2">
+          <div class="rounded-2xl overflow-hidden shadow-lg bg-gray-50 border border-gray-200 flex items-center justify-center min-h-64">
+            <img src="archimate.png" alt="Diagrama ArchiMate de la Tienda Online"
+                 class="w-full h-auto object-contain"
+                 onerror="this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-64 text-gray-400\'><span class=\'text-5xl\'>🗺️</span><p class=\'mt-3 text-sm\'>archimate.png</p></div>'" />
+          </div>
+          <p class="text-center text-xs text-gray-400 mt-2">Figura 1. Diagrama ArchiMate – Tienda Online</p>
+        </div>
+
+        <!-- Capas -->
+        <div class="lg:w-1/2 space-y-6">
+
+          <!-- Capa Negocio -->
+          <div class="border-l-4 border-green-500 pl-5 py-1">
+            <h3 class="font-bold text-green-700 text-lg mb-1">🟢 Capa de Negocio</h3>
+            <p class="text-gray-600 text-sm mb-2">
+              Modela los procesos, actores y servicios que entregan valor al cliente. 
+              Incluye los flujos de compra, gestión de pedidos y atención al cliente.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>Actor: Cliente, Administrador, Proveedor</li>
+              <li>Proceso: Búsqueda de producto → Carrito → Pago → Despacho</li>
+              <li>Servicio de negocio: Venta en línea, Soporte postventa</li>
+            </ul>
+          </div>
+
+          <!-- Capa Aplicaciones -->
+          <div class="border-l-4 border-blue-500 pl-5 py-1">
+            <h3 class="font-bold text-blue-700 text-lg mb-1">🔵 Capa de Aplicaciones</h3>
+            <p class="text-gray-600 text-sm mb-2">
+              Sistemas de software que soportan los procesos de negocio: e-commerce, ERP y CRM.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>Componente: Plataforma E-commerce (frontend + backend)</li>
+              <li>Componente: Sistema ERP (inventario, facturación)</li>
+              <li>Componente: CRM (gestión de clientes)</li>
+              <li>Servicio de aplicación: API de pagos, API de despacho</li>
+            </ul>
+          </div>
+
+          <!-- Capa Tecnología -->
+          <div class="border-l-4 border-violet-500 pl-5 py-1">
+            <h3 class="font-bold text-violet-700 text-lg mb-1">🟣 Capa de Tecnología</h3>
+            <p class="text-gray-600 text-sm mb-2">
+              Infraestructura física y virtual que sustenta las aplicaciones: servidores, redes y nube.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>Nodo: Servidor web (Cloud – AWS / Azure)</li>
+              <li>Nodo: Base de datos relacional (PostgreSQL)</li>
+              <li>Nodo: CDN para activos estáticos</li>
+              <li>Artefacto: Contenedores Docker / Kubernetes</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Flujo del proceso -->
+      <div class="mt-14">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Flujo del proceso en ArchiMate</h3>
+        <div class="flex flex-wrap justify-center items-center gap-1 text-sm font-medium">
+          <span class="arrow-step bg-green-100 text-green-800 px-4 py-2 rounded-full">Cliente inicia sesión</span>
+          <span class="arrow-step bg-green-100 text-green-800 px-4 py-2 rounded-full">Busca producto</span>
+          <span class="arrow-step bg-blue-100 text-blue-800 px-4 py-2 rounded-full">E-commerce procesa</span>
+          <span class="arrow-step bg-blue-100 text-blue-800 px-4 py-2 rounded-full">API de pago</span>
+          <span class="arrow-step bg-violet-100 text-violet-800 px-4 py-2 rounded-full">BD guarda orden</span>
+          <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full">Pedido despachado</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 3 – ARQUITECTURA TI
+  ============================================================ -->
+  <section id="arquitectura-ti" class="bg-gray-50 py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center mb-12">
+        <span class="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide mb-3">Infraestructura y sistemas</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Arquitectura TI</h2>
+        <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+          Descripción de los componentes tecnológicos que sustentan la operación de la tienda online.
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row-reverse gap-10 items-start">
+
+        <!-- Imagen placeholder -->
+        <div class="lg:w-1/2">
+          <div class="rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-200 flex items-center justify-center min-h-64">
+            <img src="arquitectura-ti.png" alt="Diagrama de Arquitectura TI"
+                 class="w-full h-auto object-contain"
+                 onerror="this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-64 text-gray-400\'><span class=\'text-5xl\'>🖥️</span><p class=\'mt-3 text-sm\'>arquitectura-ti.png</p></div>'" />
+          </div>
+          <p class="text-center text-xs text-gray-400 mt-2">Figura 2. Arquitectura TI – Tienda Online</p>
+        </div>
+
+        <!-- Pilares -->
+        <div class="lg:w-1/2 space-y-6">
+
+          <!-- Infraestructura -->
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+            <h3 class="font-bold text-gray-900 text-lg mb-2">🏗️ Infraestructura</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Capa base que provee los recursos de cómputo, almacenamiento y red necesarios para operar los sistemas de la tienda.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>Servidores en nube pública (AWS EC2 / Azure VM)</li>
+              <li>Almacenamiento de objetos (S3 / Blob Storage)</li>
+              <li>Red privada virtual (VPC) con zonas de disponibilidad</li>
+              <li>Balanceador de carga (Load Balancer)</li>
+            </ul>
+          </div>
+
+          <!-- Plataformas -->
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+            <h3 class="font-bold text-gray-900 text-lg mb-2">⚙️ Plataformas</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Middleware y herramientas de desarrollo que facilitan la ejecución de aplicaciones de negocio.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>Contenedores: Docker + Kubernetes (orquestación)</li>
+              <li>CI/CD: GitHub Actions / Jenkins</li>
+              <li>Base de datos: PostgreSQL (relacional) + Redis (caché)</li>
+              <li>Mensajería: RabbitMQ / Kafka para eventos de pedido</li>
+            </ul>
+          </div>
+
+          <!-- Servicios tecnológicos -->
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+            <h3 class="font-bold text-gray-900 text-lg mb-2">🌐 Servicios Tecnológicos</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Servicios expuestos al negocio y a los usuarios finales a través de APIs y protocolos estándar.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li>API REST (catálogo, carrito, pedidos, usuarios)</li>
+              <li>Pasarela de pagos (Stripe / PayU)</li>
+              <li>CDN para imágenes y activos estáticos</li>
+              <li>Servicio de correo transaccional (SendGrid)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Flujo técnico -->
+      <div class="mt-14">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Flujo técnico de una compra</h3>
+        <ol class="max-w-3xl mx-auto space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 bg-blue-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">1</span>
+            <p class="text-gray-600 text-sm pt-0.5">El cliente accede al sitio web a través del <strong>CDN</strong> y el balanceador de carga distribuye la petición.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 bg-blue-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">2</span>
+            <p class="text-gray-600 text-sm pt-0.5">El <strong>frontend React</strong> consume la API REST del backend (Node.js / Django) desplegado en contenedores.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 bg-blue-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">3</span>
+            <p class="text-gray-600 text-sm pt-0.5">El backend consulta <strong>Redis</strong> (caché) antes de ir a <strong>PostgreSQL</strong> para obtener el catálogo de productos.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 bg-blue-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">4</span>
+            <p class="text-gray-600 text-sm pt-0.5">Al confirmar la compra, se invoca la <strong>pasarela de pagos</strong> y se publica un evento en la cola de mensajería.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 bg-blue-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">5</span>
+            <p class="text-gray-600 text-sm pt-0.5">El <strong>microservicio de despacho</strong> consume el evento y notifica al cliente por correo electrónico transaccional.</p>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 4 – TOGAF
+  ============================================================ -->
+  <section id="togaf" class="bg-white py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center mb-12">
+        <span class="inline-block bg-violet-100 text-violet-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide mb-3">Marco de referencia</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Análisis TOGAF – ADM</h2>
+        <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+          Architecture Development Method (ADM) de TOGAF 10 aplicado a la arquitectura de la tienda online.
+        </p>
+      </div>
+
+      <!-- Qué es el ADM -->
+      <div class="bg-violet-50 border border-violet-200 rounded-2xl p-6 max-w-3xl mx-auto mb-12">
+        <h3 class="font-bold text-violet-800 text-lg mb-2">¿Qué es el ADM?</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">
+          El <strong>Architecture Development Method (ADM)</strong> es el núcleo de TOGAF. Proporciona un proceso iterativo 
+          y probado para desarrollar y gestionar el ciclo de vida de una arquitectura empresarial. 
+          Se compone de fases interconectadas que guían desde la visión estratégica hasta la implementación y el gobierno.
+        </p>
+      </div>
+
+      <!-- Fases B, C, D -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+        <!-- Fase B – Negocio -->
+        <div class="bg-green-50 border border-green-200 rounded-2xl p-6 card-hover">
+          <div class="text-3xl mb-3">🏢</div>
+          <h3 class="font-bold text-green-800 text-lg mb-1">Fase B – Arquitectura de Negocio</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            Define la estrategia de negocio, el gobierno y los procesos clave.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>✔ Mapeo de procesos de compra y venta</li>
+            <li>✔ Roles: cliente, vendedor, administrador</li>
+            <li>✔ Objetivos: aumentar ventas, fidelizar clientes</li>
+            <li>✔ KPIs: tasa de conversión, NPS, tiempo de entrega</li>
+          </ul>
+        </div>
+
+        <!-- Fase C – Aplicaciones y Datos -->
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 card-hover">
+          <div class="text-3xl mb-3">💾</div>
+          <h3 class="font-bold text-blue-800 text-lg mb-1">Fase C – Aplicaciones y Datos</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            Define los sistemas de información y el modelo de datos necesarios.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>✔ Aplicaciones: E-commerce, ERP, CRM, BI</li>
+            <li>✔ Datos: catálogo, pedidos, clientes, pagos</li>
+            <li>✔ Integración mediante APIs REST</li>
+            <li>✔ Gobierno de datos y privacidad (GDPR-like)</li>
+          </ul>
+        </div>
+
+        <!-- Fase D – Tecnología -->
+        <div class="bg-violet-50 border border-violet-200 rounded-2xl p-6 card-hover">
+          <div class="text-3xl mb-3">🔧</div>
+          <h3 class="font-bold text-violet-800 text-lg mb-1">Fase D – Arquitectura Tecnológica</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            Especifica la infraestructura de TI que soporta las aplicaciones.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>✔ Nube pública: AWS / Azure</li>
+            <li>✔ Contenedores: Docker + Kubernetes</li>
+            <li>✔ Seguridad: WAF, TLS 1.3, MFA</li>
+            <li>✔ Alta disponibilidad y recuperación ante desastres</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- AS-IS vs TO-BE -->
+      <div class="mb-14">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">AS-IS vs TO-BE</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- AS-IS -->
+          <div class="rounded-2xl border border-red-200 bg-red-50 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">📌</span>
+              <h4 class="font-bold text-red-700 text-lg">Estado Actual (AS-IS)</h4>
+            </div>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li class="flex items-start gap-2"><span class="text-red-500">✖</span> Catálogo de productos en hoja de cálculo manual</li>
+              <li class="flex items-start gap-2"><span class="text-red-500">✖</span> Gestión de pedidos por correo electrónico</li>
+              <li class="flex items-start gap-2"><span class="text-red-500">✖</span> Pagos procesados manualmente (transferencias)</li>
+              <li class="flex items-start gap-2"><span class="text-red-500">✖</span> Sin integración entre sistemas (silos de información)</li>
+              <li class="flex items-start gap-2"><span class="text-red-500">✖</span> Infraestructura on-premise con alta latencia</li>
+            </ul>
+          </div>
+
+          <!-- TO-BE -->
+          <div class="rounded-2xl border border-green-200 bg-green-50 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">🚀</span>
+              <h4 class="font-bold text-green-700 text-lg">Estado Objetivo (TO-BE)</h4>
+            </div>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li class="flex items-start gap-2"><span class="text-green-600">✔</span> Plataforma e-commerce integrada con ERP y CRM</li>
+              <li class="flex items-start gap-2"><span class="text-green-600">✔</span> Gestión automatizada de pedidos y notificaciones</li>
+              <li class="flex items-start gap-2"><span class="text-green-600">✔</span> Pasarela de pagos multicanal (tarjeta, PSE, cripto)</li>
+              <li class="flex items-start gap-2"><span class="text-green-600">✔</span> Arquitectura orientada a microservicios con APIs</li>
+              <li class="flex items-start gap-2"><span class="text-green-600">✔</span> Infraestructura cloud escalable con SLA 99.9%</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Trazabilidad -->
+      <div>
+        <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Trazabilidad Estratégica</h3>
+        <div class="flex flex-wrap justify-center items-center gap-2 text-sm font-semibold">
+          <div class="bg-green-600 text-white px-5 py-3 rounded-xl text-center shadow">
+            <div class="text-lg mb-0.5">🎯</div>
+            Estrategia
+          </div>
+          <div class="text-blue-400 text-2xl">→</div>
+          <div class="bg-blue-600 text-white px-5 py-3 rounded-xl text-center shadow">
+            <div class="text-lg mb-0.5">🔄</div>
+            Proceso
+          </div>
+          <div class="text-blue-400 text-2xl">→</div>
+          <div class="bg-indigo-600 text-white px-5 py-3 rounded-xl text-center shadow">
+            <div class="text-lg mb-0.5">💻</div>
+            Aplicación
+          </div>
+          <div class="text-blue-400 text-2xl">→</div>
+          <div class="bg-violet-600 text-white px-5 py-3 rounded-xl text-center shadow">
+            <div class="text-lg mb-0.5">🛠️</div>
+            Tecnología
+          </div>
+        </div>
+        <p class="text-center text-xs text-gray-400 mt-4 max-w-lg mx-auto">
+          La trazabilidad garantiza que cada decisión tecnológica esté alineada con los procesos de negocio 
+          y los objetivos estratégicos de la organización.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 5 – CONCLUSIONES
+  ============================================================ -->
+  <section id="conclusiones" class="bg-gray-50 py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center mb-12">
+        <span class="inline-block bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide mb-3">Síntesis del análisis</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Conclusiones</h2>
+        <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+          Principales hallazgos y recomendaciones derivados del análisis de arquitectura empresarial.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4 card-hover">
+          <span class="flex-shrink-0 text-3xl">🧩</span>
+          <div>
+            <h4 class="font-bold text-gray-900 mb-1">1. Integración como eje central</h4>
+            <p class="text-gray-600 text-sm">
+              La integración entre las capas de negocio, aplicaciones y tecnología es el factor 
+              crítico de éxito. ArchiMate permitió identificar brechas de comunicación que 
+              limitaban la escalabilidad de la tienda.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4 card-hover">
+          <span class="flex-shrink-0 text-3xl">☁️</span>
+          <div>
+            <h4 class="font-bold text-gray-900 mb-1">2. La nube como habilitador de escalabilidad</h4>
+            <p class="text-gray-600 text-sm">
+              Migrar a una infraestructura cloud-native con contenedores permite a la tienda 
+              escalar dinámicamente durante picos de demanda (como fechas especiales), 
+              reduciendo costos operativos en un estimado del 30–40%.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4 card-hover">
+          <span class="flex-shrink-0 text-3xl">🔄</span>
+          <div>
+            <h4 class="font-bold text-gray-900 mb-1">3. TOGAF como guía de transformación</h4>
+            <p class="text-gray-600 text-sm">
+              El ADM de TOGAF proporcionó un marco estructurado para planificar la transición 
+              del estado AS-IS al TO-BE, asegurando la trazabilidad entre la estrategia 
+              organizacional y las decisiones tecnológicas.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4 card-hover">
+          <span class="flex-shrink-0 text-3xl">🔐</span>
+          <div>
+            <h4 class="font-bold text-gray-900 mb-1">4. Seguridad y gobierno de datos</h4>
+            <p class="text-gray-600 text-sm">
+              La implementación de controles de seguridad (WAF, cifrado TLS, MFA) y políticas 
+              de gobierno de datos son requisitos no negociables para garantizar la confianza 
+              del cliente y el cumplimiento normativo.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4 card-hover">
+          <span class="flex-shrink-0 text-3xl">📈</span>
+          <div>
+            <h4 class="font-bold text-gray-900 mb-1">5. Arquitectura orientada al valor del cliente</h4>
+            <p class="text-gray-600 text-sm">
+              Toda decisión de arquitectura debe evaluarse en función del impacto en la 
+              experiencia del cliente. La automatización de notificaciones, el catálogo en 
+              tiempo real y los pagos multicanal son los diferenciadores competitivos clave.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Proyecto -->
+      <div>
+        <h4 class="text-white font-bold mb-3">🏪 Tienda Online – AE</h4>
+        <p class="text-sm leading-relaxed">
+          Trabajo académico sobre Arquitectura Empresarial de una Tienda Online. 
+          Elaborado para la asignatura de Arquitectura Empresarial.
+        </p>
+      </div>
+
+      <!-- Referencias -->
+      <div>
+        <h4 class="text-white font-bold mb-3">📚 Referencias</h4>
+        <ul class="text-sm space-y-1">
+          <li>• The Open Group. <em>TOGAF® Standard, 10th Edition</em>. 2022.</li>
+          <li>• The Open Group. <em>ArchiMate® 3.1 Specification</em>. 2019.</li>
+          <li>• ISO/IEC/IEEE 42010:2011 – Systems architecture description.</li>
+          <li>• Lankhorst, M. <em>Enterprise Architecture at Work</em>. Springer, 2017.</li>
+        </ul>
+      </div>
+
+      <!-- Autor -->
+      <div>
+        <h4 class="text-white font-bold mb-3">👤 Autor</h4>
+        <p class="text-sm">
+          <span class="text-white font-semibold">[Nombre del Estudiante]</span><br />
+          Programa: Ingeniería de Sistemas / TI<br />
+          Universidad: [Nombre de la Universidad]<br />
+          Fecha: 2025
+        </p>
+      </div>
+
+    </div>
+    <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center text-xs text-gray-500">
+      Contenido elaborado con fines académicos · TOGAF® y ArchiMate® son marcas registradas de The Open Group.
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BOTÓN "VOLVER ARRIBA"
+  ============================================================ -->
+  <button id="back-to-top"
+          onclick="window.scrollTo({top:0, behavior:'smooth'})"
+          class="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl transition opacity-0 pointer-events-none"
+          aria-label="Volver arriba">
+    ↑
+  </button>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    // Show/hide back-to-top button
+    const btn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+        btn.classList.add('opacity-100');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none');
+        btn.classList.remove('opacity-100');
+      }
+    });
+
+    // Active nav link highlight based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 80) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('bg-blue-100', 'text-blue-700', 'font-semibold');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('bg-blue-100', 'text-blue-700', 'font-semibold');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
